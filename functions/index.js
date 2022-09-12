@@ -5,6 +5,8 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 admin.initializeApp();
 
+// ********* onRequest Function *********
+
 // Take the text parameter passed to this HTTP endpoint and insert it into
 // Firestore under the path /messages/:documentId/original
 exports.addMessage = functions.https.onRequest(async (req, res) => {
@@ -18,6 +20,8 @@ exports.addMessage = functions.https.onRequest(async (req, res) => {
   // Send back a message that we've successfully written the message
   res.json({ result: `Message with ID: ${writeResult.id} added.` });
 });
+
+// ********* onCreate Function *********
 
 // Listens for new messages added to /messages/:documentId/original and creates an
 // uppercase version of the message to /messages/:documentId/uppercase
